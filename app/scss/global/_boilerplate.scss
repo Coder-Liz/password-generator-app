@@ -1,0 +1,33 @@
+@use '../util' as u;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'JetBrains Mono', Arial, Helvetica, sans-serif;
+  background: var(--clr-main-bg);
+  color: var(--clr-light-text);
+  height: 100vh;
+  display: grid;
+  align-content: center;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

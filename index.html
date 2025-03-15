@@ -3,7 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./img/favicon-32x32.png"
+    />
+
     <title>Password Generator App</title>
+
+    <link rel="stylesheet" href="/dist/style.css" />
+    <script defer src="/app/js/script.js"></script>
   </head>
   <body>
     <main>
@@ -15,11 +25,21 @@
             <input
               type="text"
               id="password"
+              placeholder="P4$5W0rD!"
               class="password__box-input"
               readonly
             />
-            <button id="copy-btn" class="password__copy-btn">
-              <svg width="21" height="24" xmlns="http://www.w3.org/2000/svg">
+            <button
+              id="copy-btn"
+              class="password__copy-btn"
+              aria-label="Copy password"
+            >
+              <svg
+                class="password__copy-icon"
+                width="21"
+                height="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   d="M20.341 3.091 17.909.659A2.25 2.25 0 0 0 16.319 0H8.25A2.25 2.25 0 0 0 6 2.25V4.5H2.25A2.25 2.25 0 0 0 0 6.75v15A2.25 2.25 0 0 0 2.25 24h10.5A2.25 2.25 0 0 0 15 21.75V19.5h3.75A2.25 2.25 0 0 0 21 17.25V4.682a2.25 2.25 0 0 0-.659-1.591ZM12.469 21.75H2.53a.281.281 0 0 1-.281-.281V7.03a.281.281 0 0 1 .281-.281H6v10.5a2.25 2.25 0 0 0 2.25 2.25h4.5v1.969a.282.282 0 0 1-.281.281Zm6-4.5H8.53a.281.281 0 0 1-.281-.281V2.53a.281.281 0 0 1 .281-.281H13.5v4.125c0 .621.504 1.125 1.125 1.125h4.125v9.469a.282.282 0 0 1-.281.281Zm.281-12h-3v-3h.451c.075 0 .147.03.2.082L18.667 4.6a.283.283 0 0 1 .082.199v.451Z"
                   fill="#A4FFAF"
@@ -27,63 +47,69 @@
               </svg>
             </button>
           </div>
-          <!-- Character Length Slider -->
-          <div class="password__length-wrapper">
-            <label for="length">Character Length</label>
-            <span id="length-value" class="password__length">10</span>
-            <div class="password__custom-slider">
+          <div class="password__group-wrapper">
+            <!-- Character Length Slider -->
+            <div class="password__length-wrapper">
+              <label for="length" class="password__length-label"
+                >Character Length
+                <span id="length-value" class="password__length">0</span></label
+              >
+
               <input
                 type="range"
                 id="charLength"
                 name="charLength"
-                min="6"
-                max="20"
-                value="10"
+                aria-valuemin="6"
+                aria-valuemax="20"
+                aria-valuenow="10"
+                class="password__slider"
               />
             </div>
-          </div>
-          <!-- Options for password generation -->
-          <div class="password__options">
-            <label>
-              <input type="checkbox" id="uppercase" checked />
-              Include Uppercase Letters
-            </label>
-            <label>
-              <input type="checkbox" id="lowercase" checked />
-              Include Lowercase Letters
-            </label>
-            <label>
-              <input type="checkbox" id="numbers" checked />
-              Include Numbers
-            </label>
-            <label>
-              <input type="checkbox" id="symbols" />
-              Include Symbols
-            </label>
-          </div>
-          <!-- Password Strength Indicator -->
-          <div class="password__strength-container">
-            <span class="password__strength-level">STRENGTH</span>
-            <span id="strength-level" class="password__medium-level"
-              >MEDIUM</span
-            >
-            <div class="password__strength-bars">
-              <div class="password__bar"></div>
-              <div class="password__bar"></div>
-              <div class="password__bar"></div>
-              <div class="password__bar"></div>
+            <!-- Options for password generation -->
+            <div class="password__options">
+              <label>
+                <input type="checkbox" id="uppercase" checked />
+                Include Uppercase Letters
+              </label>
+              <label>
+                <input type="checkbox" id="lowercase" checked />
+                Include Lowercase Letters
+              </label>
+              <label>
+                <input type="checkbox" id="numbers" checked />
+                Include Numbers
+              </label>
+              <label>
+                <input type="checkbox" id="symbols" checked />
+                Include Symbols
+              </label>
             </div>
+            <!-- Password Strength Indicator -->
+            <div class="password__strength-wrapper">
+              <span class="password__span-strength">Strength</span>
+              <div class="password__bar-wrapper">
+                <span id="strength-level" class="password__strength-text"
+                  >Too weak</span
+                >
+                <div class="password__strength-bars">
+                  <div role="progressbar" class="password__bar"></div>
+                  <div role="progressbar" class="password__bar"></div>
+                  <div role="progressbar" class="password__bar"></div>
+                  <div role="progressbar" class="password__bar"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Generate Button -->
+            <button id="generate-btn" class="password__generate-btn">
+              GENERATE
+              <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill="#24232C"
+                  d="m5.106 12 6-6-6-6-1.265 1.265 3.841 3.84H.001v1.79h7.681l-3.841 3.84z"
+                />
+              </svg>
+            </button>
           </div>
-          <!-- Generate Button -->
-          <button id="generate-btn" class="password__generate-btn">
-            GENERATE
-            <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
-              <path
-                fill="#24232C"
-                d="m5.106 12 6-6-6-6-1.265 1.265 3.841 3.84H.001v1.79h7.681l-3.841 3.84z"
-              />
-            </svg>
-          </button>
         </div>
       </section>
     </main>
