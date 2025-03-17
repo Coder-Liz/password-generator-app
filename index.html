@@ -50,7 +50,7 @@
           <div class="password__group-wrapper">
             <!-- Character Length Slider -->
             <div class="password__length-wrapper">
-              <label for="length" class="password__length-label"
+              <label for="character length" class="password__length-label"
                 >Character Length
                 <span id="length-value" class="password__length">0</span></label
               >
@@ -105,17 +105,33 @@
                   class="password__strength-text"
                 ></span>
                 <div class="password__strength-bars">
-                  <div role="progressbar" class="password__bar"></div>
-                  <div role="progressbar" class="password__bar"></div>
-                  <div role="progressbar" class="password__bar"></div>
-                  <div role="progressbar" class="password__bar"></div>
+                  <div
+                    role="progressbar"
+                    aria-label="Password Strength"
+                    class="password__bar"
+                  ></div>
+                  <div
+                    role="progressbar"
+                    aria-label="Password Strength"
+                    class="password__bar"
+                  ></div>
+                  <div
+                    role="progressbar"
+                    aria-label="Password Strength"
+                    class="password__bar"
+                  ></div>
+                  <div
+                    role="progressbar"
+                    aria-label="Password Strength"
+                    class="password__bar"
+                  ></div>
                 </div>
               </div>
             </div>
             <!-- Generate Button -->
             <button
               id="generate-btn"
-              type="change"
+              type="button"
               class="password__generate-btn"
             >
               GENERATE

@@ -39,7 +39,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/password-generator-app-7G-OOB9fAx)
 - Live Site URL: [Add live site URL here](https://rococo-croissant-196b7a.netlify.app/)
 
 ## My process
