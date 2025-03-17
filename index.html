@@ -22,30 +22,30 @@
           <h1 class="password__title">Password Generator</h1>
           <!-- Password Display -->
           <div class="password__box">
-            <input
-              type="text"
-              id="password"
-              placeholder="P4$5W0rD!"
-              class="password__box-input"
-              readonly
-            />
-            <button
-              id="copy-btn"
-              class="password__copy-btn"
-              aria-label="Copy password"
-            >
-              <svg
-                class="password__copy-icon"
-                width="21"
-                height="24"
-                xmlns="http://www.w3.org/2000/svg"
+            <span class="password__display">
+              <span class="password__placeholder">P4$5W0rD!</span>
+            </span>
+
+            <div class="password__copy-btn-wrapper">
+              <span class="password__copied-text"></span>
+              <button
+                id="copy-btn"
+                class="password__copy-btn"
+                aria-label="Copy password"
               >
-                <path
-                  d="M20.341 3.091 17.909.659A2.25 2.25 0 0 0 16.319 0H8.25A2.25 2.25 0 0 0 6 2.25V4.5H2.25A2.25 2.25 0 0 0 0 6.75v15A2.25 2.25 0 0 0 2.25 24h10.5A2.25 2.25 0 0 0 15 21.75V19.5h3.75A2.25 2.25 0 0 0 21 17.25V4.682a2.25 2.25 0 0 0-.659-1.591ZM12.469 21.75H2.53a.281.281 0 0 1-.281-.281V7.03a.281.281 0 0 1 .281-.281H6v10.5a2.25 2.25 0 0 0 2.25 2.25h4.5v1.969a.282.282 0 0 1-.281.281Zm6-4.5H8.53a.281.281 0 0 1-.281-.281V2.53a.281.281 0 0 1 .281-.281H13.5v4.125c0 .621.504 1.125 1.125 1.125h4.125v9.469a.282.282 0 0 1-.281.281Zm.281-12h-3v-3h.451c.075 0 .147.03.2.082L18.667 4.6a.283.283 0 0 1 .082.199v.451Z"
-                  fill="#A4FFAF"
-                />
-              </svg>
-            </button>
+                <svg
+                  class="password__copy-icon"
+                  width="21"
+                  height="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20.341 3.091 17.909.659A2.25 2.25 0 0 0 16.319 0H8.25A2.25 2.25 0 0 0 6 2.25V4.5H2.25A2.25 2.25 0 0 0 0 6.75v15A2.25 2.25 0 0 0 2.25 24h10.5A2.25 2.25 0 0 0 15 21.75V19.5h3.75A2.25 2.25 0 0 0 21 17.25V4.682a2.25 2.25 0 0 0-.659-1.591ZM12.469 21.75H2.53a.281.281 0 0 1-.281-.281V7.03a.281.281 0 0 1 .281-.281H6v10.5a2.25 2.25 0 0 0 2.25 2.25h4.5v1.969a.282.282 0 0 1-.281.281Zm6-4.5H8.53a.281.281 0 0 1-.281-.281V2.53a.281.281 0 0 1 .281-.281H13.5v4.125c0 .621.504 1.125 1.125 1.125h4.125v9.469a.282.282 0 0 1-.281.281Zm.281-12h-3v-3h.451c.075 0 .147.03.2.082L18.667 4.6a.283.283 0 0 1 .082.199v.451Z"
+                    fill="#A4FFAF"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
           <div class="password__group-wrapper">
             <!-- Character Length Slider -->
@@ -59,28 +59,40 @@
                 type="range"
                 id="charLength"
                 name="charLength"
-                aria-valuemin="6"
-                aria-valuemax="20"
-                aria-valuenow="10"
+                min="0"
+                max="20"
+                value="10"
+                aria-label="Password length"
                 class="password__slider"
+                autocomplete="off"
               />
             </div>
             <!-- Options for password generation -->
             <div class="password__options">
-              <label>
-                <input type="checkbox" id="uppercase" checked />
+              <label for="uppercase">
+                <input
+                  type="checkbox"
+                  id="uppercase"
+                  value="uppercase"
+                  checked
+                />
                 Include Uppercase Letters
               </label>
-              <label>
-                <input type="checkbox" id="lowercase" checked />
+              <label for="lowercase">
+                <input
+                  type="checkbox"
+                  id="lowercase"
+                  value="lowercase"
+                  checked
+                />
                 Include Lowercase Letters
               </label>
-              <label>
-                <input type="checkbox" id="numbers" checked />
+              <label for="numbers">
+                <input type="checkbox" id="numbers" value="numbers" checked />
                 Include Numbers
               </label>
-              <label>
-                <input type="checkbox" id="symbols" checked />
+              <label for="symbols">
+                <input type="checkbox" id="symbols" value="symbols" checked />
                 Include Symbols
               </label>
             </div>
@@ -88,9 +100,10 @@
             <div class="password__strength-wrapper">
               <span class="password__span-strength">Strength</span>
               <div class="password__bar-wrapper">
-                <span id="strength-level" class="password__strength-text"
-                  >Too weak</span
-                >
+                <span
+                  id="strength-level"
+                  class="password__strength-text"
+                ></span>
                 <div class="password__strength-bars">
                   <div role="progressbar" class="password__bar"></div>
                   <div role="progressbar" class="password__bar"></div>
@@ -100,9 +113,18 @@
               </div>
             </div>
             <!-- Generate Button -->
-            <button id="generate-btn" class="password__generate-btn">
+            <button
+              id="generate-btn"
+              type="change"
+              class="password__generate-btn"
+            >
               GENERATE
-              <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
+              <svg
+                class="password__generate-btn-arrow"
+                width="12"
+                height="12"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   fill="#24232C"
                   d="m5.106 12 6-6-6-6-1.265 1.265 3.841 3.84H.001v1.79h7.681l-3.841 3.84z"
